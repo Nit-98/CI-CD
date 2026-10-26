@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -10,6 +11,12 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t myapp:v1 .'
+            }
+        }
+
+        stage('Trivy Scan') {
+            steps {
+                sh 'sudo trivy image myapp:v1'
             }
         }
 
@@ -26,3 +33,4 @@ pipeline {
         }
     }
 }
+
