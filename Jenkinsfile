@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -16,7 +15,7 @@ pipeline {
 
         stage('Trivy Scan') {
             steps {
-                sh 'sudo trivy image myapp:v1'
+                sh 'sudo -n /usr/bin/trivy image myapp:v1'
             }
         }
 
@@ -33,4 +32,7 @@ pipeline {
         }
     }
 }
+
+    
+
 
